@@ -30,7 +30,7 @@ The Arduino Nano 33 BLE Sense is an evolution of the traditional Arduino Nano, b
 Take the arduino nano 33 BLE device and connect it with the relay board and Fan(Motor) as shown in the following Circuit diagram. To deploy this repository on arduino nano 33 BLE sense you must have installed the Arduino IDE and connect the device to the system using the standard USB cable that comes with the device. Press the reset button on the device twice to take it to boot loader mode. The yellow led on board starts blinking.  Once the Arduino IDE is installed open tools -->  Library manager and install all required libraries of arduino nano 33 BLE. In tools select arduino nano 33 BLE in boards. Then open sketch-->Include Library --> Add .Zip Library. Select the path of the zip library " ei-voice-data-arduino-1.0.zip"  present in this repository. Once the librray is successfully added to the path open File-->Examples-->voice_data_inferencing-->nano_ble33_sense_microphone. This will  open the code in another window  simply press upload button to write the binary file to the microcontroller. 
 
 
-![Figure : Circuit Diagram](https://github.com/dlision/Voice-Controlled-Fan-using-TinyML/blob/main/Circuit%20.jpg "Figure : Circuit Diagram")
+![Figure : Circuit Diagram](https://github.com/L-A-Sandhu/Voice-Controlled-Fan-using-TinyML/blob/master/Circuit%20.jpg "Figure : Circuit Diagram")
 
 ##  Data Acquistion
  60 Audio sampled at 16kHZ, 20ms each  is collected for each class through audrino nano 33 BLE and the edge impulse api. Arduino nano 33 BLE is connected with the edge impulse api using a firmware that takes device in data acquisition mode. The detailed steps for building this connection can be see on "https://docs.edgeimpulse.com/docs/arduino-nano-33-ble-sense". Among 60 samples the 85 % samples were used for training of the model whereas, the rest of the samples were used for the testing of the designed model. 
@@ -38,13 +38,13 @@ Take the arduino nano 33 BLE device and connect it with the relay board and Fan(
  The Traning data is divided in to a window size of 1000ms each. Spectrogram is calculated on each window using the dsp module for arduino. A spectrogram is a visual way of representing the signal strength, or “loudness”, of a signal over time at various frequencies present in a particular waveform. Not only can one see whether there is more or less energy at, for example, 2 Hz vs 10 Hz, but one can also see how energy levels vary over time.These spectrogram images are then fed into a machine learning model that classifies between three classes. The summary of the model is as follows
 
 
-![Figure :Model_Summary](https://github.com/dlision/Voice-Controlled-Fan-using-TinyML/blob/dev/Model_Summary.png "Figure: Model Summary")
+![Figure :Model_Summary](https://github.com/L-A-Sandhu/Voice-Controlled-Fan-using-TinyML/blob/master/Model_Summary.png "Figure: Model Summary")
 
 ## Results 
 The model is first trained and the over all traning accuracy of 86.1 % is achieved on 20 traning cycles. The loss of the model was redcued to 0.41 and the F1 score is 0.89, 0.82 and 0.87 for Noise, On and Off class respectively. The graphical representation of the confusion matrix is shown below
 
-![Figure :Traning_results](https://github.com/dlision/Voice-Controlled-Fan-using-TinyML/blob/dev/Training%20Results.jpg)
+![Figure :Traning_results](https://github.com/L-A-Sandhu/Voice-Controlled-Fan-using-TinyML/blob/master/Training%20Results.jpg)
  
  The test accuracy of the model is  78.99 % , with an F1 score of 0.93, 0.71 and 0.84 for Noise, on and off classes respectively the confusion matrix is of test is shown in the following figure. 
- ![Figure :Traning_results](https://github.com/dlision/Voice-Controlled-Fan-using-TinyML/blob/dev/TestResults.jpg) 
+ ![Figure :Traning_results](https://github.com/L-A-Sandhu/Voice-Controlled-Fan-using-TinyML/blob/master/TestResults.jpg) 
 
